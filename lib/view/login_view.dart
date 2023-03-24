@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../components/text_form_global.dart';
+
 class LoginView extends StatelessWidget {
   LoginView({Key? key}) : super(key: key);
   final TextEditingController emailController = TextEditingController();
