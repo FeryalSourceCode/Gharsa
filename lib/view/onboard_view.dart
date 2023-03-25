@@ -10,10 +10,11 @@ class OnBoardView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // ignore: no_leading_underscores_for_local_identifiers
     AuthenticationManager _authManager = Get.find();
 
     return Obx(() {
-      return _authManager.isLogged.value ? HomeView() : LoginView();
+      return _authManager.isLogged.value ? const HomeView() : LoginView();
     });
   }
 }

@@ -19,7 +19,7 @@ class LoginView extends StatelessWidget {
               children: [
                 Container(
                   alignment: Alignment.center,
-                  child: Text(
+                  child: const Text(
                     "Logo",
                     style: TextStyle(
                         color: Colors.cyan,
@@ -28,7 +28,7 @@ class LoginView extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 50,),
-                Text(
+               const Text(
                   "Login to your account",
                   style: TextStyle(
                       color: Colors.black54,

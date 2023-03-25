@@ -3,11 +3,12 @@ import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 
 import '../helper/auth_manager.dart';
-import 'login_view.dart';
 import 'onboard_view.dart';
 
 class SplashView extends StatelessWidget {
   final AuthenticationManager _authmanager = Get.put(AuthenticationManager());
+
+   SplashView({super.key});
 
   Future<void> initializeSettings() async {
     _authmanager.checkLoginStatus();
