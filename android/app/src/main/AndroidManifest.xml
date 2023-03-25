@@ -3,7 +3,7 @@
    <application
         android:label="gharsah_flutter"
         android:name="${applicationName}"
-        android:icon="@drawable/app_logo.png">
+        android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
             android:exported="true"

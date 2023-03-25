@@ -55,7 +55,7 @@ Scaffold waitingView() {
         child: SizedBox(
             width: 350.0,
             height: 350.0,
-            child: Image.asset("assets/img/logo_gray.png", color: Colors.white.withOpacity(0.3), colorBlendMode: BlendMode.modulate,)),
+            child: Image.asset("assets/img/logo_gray.png", color: Colors.white.withOpacity(0.4), colorBlendMode: BlendMode.modulate,)),
       ),
       Center(
         child: SizedBox(
@@ -69,7 +69,7 @@ Scaffold waitingView() {
         child: SizedBox(
             width: 350.0,
             height: 350.0,
-            child: Image.asset("assets/img/logo_gray.png", color: Colors.white.withOpacity(0.3), colorBlendMode: BlendMode.modulate,)),
+            child: Image.asset("assets/img/logo_gray.png", color: Colors.white.withOpacity(0.4), colorBlendMode: BlendMode.modulate,)),
       ),
     ]),
   );
