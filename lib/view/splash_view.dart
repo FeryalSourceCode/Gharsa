@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:lottie/lottie.dart';
+import 'package:gharsah_flutter/utils/app_colors.dart';
 
 import '../helper/auth_manager.dart';
 import 'onboard_view.dart';
@@ -8,7 +8,7 @@ import 'onboard_view.dart';
 class SplashView extends StatelessWidget {
   final AuthenticationManager _authmanager = Get.put(AuthenticationManager());
 
-   SplashView({super.key});
+  SplashView({super.key});
 
   Future<void> initializeSettings() async {
     _authmanager.checkLoginStatus();
@@ -47,12 +47,30 @@ Scaffold errorView(AsyncSnapshot<Object?> snapshot) {
 
 Scaffold waitingView() {
   return Scaffold(
-    backgroundColor: Colors.cyan,
-    body: Center(
-      child: SizedBox(
-          width: 100.0,
-          height: 100.0,
-          child: Lottie.asset('assets/water3.json')),
-    ),
+    backgroundColor: AppColors.culturedGray,
+    body: Stack(children: [
+      Positioned(
+        left: -100,
+        top: -70,
+        child: SizedBox(
+            width: 350.0,
+            height: 350.0,
+            child: Image.asset("assets/img/logo_gray.png", color: Colors.white.withOpacity(0.3), colorBlendMode: BlendMode.modulate,)),
+      ),
+      Center(
+        child: SizedBox(
+            width: 220.0,
+            height: 220.0,
+            child: Image.asset("assets/img/gharsa_logo.png")),
+      ),
+      Positioned(
+        right: -100,
+        bottom: -80,
+        child: SizedBox(
+            width: 350.0,
+            height: 350.0,
+            child: Image.asset("assets/img/logo_gray.png", color: Colors.white.withOpacity(0.3), colorBlendMode: BlendMode.modulate,)),
+      ),
+    ]),
   );
 }
