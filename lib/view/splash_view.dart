@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:gharsah_flutter/utils/app_colors.dart';
 
 import '../helper/auth_manager.dart';
-import 'onboard_view.dart';
+import 'base_view.dart';
 
 class SplashView extends StatelessWidget {
   final AuthenticationManager _authmanager = Get.put(AuthenticationManager());
@@ -12,6 +12,7 @@ class SplashView extends StatelessWidget {
 
   Future<void> initializeSettings() async {
     _authmanager.checkLoginStatus();
+    _authmanager.checkOnBoardStatus();
 
     //Simulate other services for 3 seconds
     await Future.delayed(const Duration(seconds: 3));
@@ -30,7 +31,7 @@ class SplashView extends StatelessWidget {
             if (snapshot.hasError) {
               return errorView(snapshot);
             } else {
-              return const OnBoardView();
+              return const BaseView();
             }
           }
         });
@@ -55,7 +56,11 @@ Scaffold waitingView() {
         child: SizedBox(
             width: 350.0,
             height: 350.0,
-            child: Image.asset("assets/img/logo_gray.png", color: Colors.white.withOpacity(0.4), colorBlendMode: BlendMode.modulate,)),
+            child: Image.asset(
+              "assets/img/logo_gray.png",
+              color: Colors.white.withOpacity(0.4),
+              colorBlendMode: BlendMode.modulate,
+            )),
       ),
       Center(
         child: SizedBox(
@@ -69,7 +74,11 @@ Scaffold waitingView() {
         child: SizedBox(
             width: 350.0,
             height: 350.0,
-            child: Image.asset("assets/img/logo_gray.png", color: Colors.white.withOpacity(0.4), colorBlendMode: BlendMode.modulate,)),
+            child: Image.asset(
+              "assets/img/logo_gray.png",
+              color: Colors.white.withOpacity(0.4),
+              colorBlendMode: BlendMode.modulate,
+            )),
       ),
     ]),
   );

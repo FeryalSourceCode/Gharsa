@@ -18,5 +18,16 @@ mixin CacheManager{
   }
 }
 
+Future<bool> saveOnBoardStatus(int? viewed) async {
+  final box = GetStorage();
+  await box.write(CacheManagerKey.VIEWED.toString(), viewed);
+  return true;
+}
+
+String? getOnBoardStatus() {
+  final box = GetStorage();
+  return box.read(CacheManagerKey.VIEWED.toString());
+}
+
 // ignore: constant_identifier_names
-enum CacheManagerKey {TOKEN}
+enum CacheManagerKey {TOKEN, VIEWED}

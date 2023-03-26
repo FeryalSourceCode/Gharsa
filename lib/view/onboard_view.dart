@@ -1,20 +1,49 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:gharsah_flutter/utils/constants.dart';
+import 'package:gharsah_flutter/view/home_view.dart';
 
-import '../helper/auth_manager.dart';
-import 'home_view.dart';
-import 'login_view.dart';
+import '../components/widgets/introduction.dart';
+import '../components/widgets/introscreenonboarding.dart';
 
 class OnBoardView extends StatelessWidget {
-  const OnBoardView({Key? key}) : super(key: key);
+  const OnBoardView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // ignore: no_leading_underscores_for_local_identifiers
-    AuthenticationManager _authManager = Get.find();
 
-    return Obx(() {
-      return _authManager.isLogged.value ? const HomeView() : LoginView();
-    });
+    final List<Introduction> list = [
+      const Introduction(
+        title: 'Buy & Sell',
+        subTitle: 'Browse the menu and order directly from the application',
+        imageUrl: Cards.gcard1,
+      ),
+      const Introduction(
+        title: 'Delivery',
+        subTitle: 'Your order will be immediately collected and',
+        imageUrl: Cards.gcard2,
+      ),
+      const Introduction(
+        title: 'Receive Money',
+        subTitle: 'Pick up delivery at your door and enjoy groceries',
+        imageUrl: Cards.gcard3,
+      ),
+      const Introduction(
+        title: 'Finish',
+        subTitle: 'Browse the menu and order directly from the application',
+        imageUrl: Cards.gcard4,
+      ),
+    ];
+    return IntroScreenOnboarding(
+      introductionList: list,
+      onTapSkipButton: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const HomeView(),
+          ), //MaterialPageRoute
+        );
+      },
+      // foregroundColor: Colors.red,
+    );
   }
 }

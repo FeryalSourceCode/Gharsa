@@ -5,8 +5,9 @@ import 'package:gharsah_flutter/utils/hex_converter.dart';
 
 class AppColors {
   static Color container = const Color.fromARGB(255, 37, 76, 95);
-  static Color background = Colors.black;
-  static Color text = Colors.white;
+  static Color gBlack = Colors.black;
+  static Color gWhite = Colors.white;
+  static Color gGray = Colors.grey;
   static Color textDark = Colors.white38;
 
   // static Color bgColor = const Color(0xFFf8faf8);
@@ -26,4 +27,7 @@ class AppColors {
   static Color jetStreamColor = HexColor.fromHex('#BBCBC2');
   static Color culturedGray = HexColor.fromHex('#f7f7f7');
   static Color platinum = HexColor.fromHex('#E8E8E8');
+  
+  static Color bronzeColor = HexColor.fromHex('#AA8B56');
+  static Color mustardYellowColor = HexColor.fromHex('#E7B10A');
 }
