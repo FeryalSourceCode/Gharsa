@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:get_storage/get_storage.dart';
 mixin CacheManager{
 
@@ -24,7 +26,7 @@ Future<bool> saveOnBoardStatus(int? viewed) async {
   return true;
 }
 
-String? getOnBoardStatus() {
+int getOnBoardStatus() {
   final box = GetStorage();
   return box.read(CacheManagerKey.VIEWED.toString());
 }

@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:gharsah_flutter/utils/constants.dart';
 import 'package:gharsah_flutter/view/home_view.dart';
 
 import '../components/widgets/introduction.dart';
 import '../components/widgets/introscreenonboarding.dart';
+import '../helper/auth_manager.dart';
 
 class OnBoardView extends StatelessWidget {
   const OnBoardView({super.key});
-
   @override
   Widget build(BuildContext context) {
+    AuthenticationManager _authManager = Get.find();
 
     final List<Introduction> list = [
       const Introduction(
@@ -36,12 +38,15 @@ class OnBoardView extends StatelessWidget {
     return IntroScreenOnboarding(
       introductionList: list,
       onTapSkipButton: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => const HomeView(),
-          ), //MaterialPageRoute
-        );
+        int isViewed = 0;
+        _authManager.onBoardStatus(isViewed);
+        Get.off(const HomeView());
+        // Navigator.push(
+        //   context,
+        //   MaterialPageRoute(
+        //     builder: (context) => const HomeView(),
+        //   ), //MaterialPageRoute
+        // );
       },
       // foregroundColor: Colors.red,
     );
