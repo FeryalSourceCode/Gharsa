@@ -22,15 +22,17 @@ class AuthenticationManager extends GetxController with CacheManager {
     }
   }
 
-   void onBoardStatus(int? viewed) async {
+  void onBoardStatus(int? viewed) async {
     isViewed.value = 0;
     await saveOnBoardStatus(viewed);
   }
 
-    void checkOnBoardStatus() {
+  void checkOnBoardStatus() {
     final viewing = getOnBoardStatus();
-    if (viewing != null) {
+    if (viewing == 0) {
       isViewed.value = 0;
+    } else {
+      isViewed.value = 1;
     }
   }
 }

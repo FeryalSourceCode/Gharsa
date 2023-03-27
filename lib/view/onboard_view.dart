@@ -11,6 +11,7 @@ class OnBoardView extends StatelessWidget {
   const OnBoardView({super.key});
   @override
   Widget build(BuildContext context) {
+    // ignore: no_leading_underscores_for_local_identifiers
     AuthenticationManager _authManager = Get.find();
 
     final List<Introduction> list = [

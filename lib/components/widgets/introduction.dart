@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../utils/constants.dart';
-
 class Introduction extends StatefulWidget {
   final String imageUrl;
   final String title;
