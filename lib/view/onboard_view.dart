@@ -41,7 +41,7 @@ class OnBoardView extends StatelessWidget {
       onTapSkipButton: () {
         int isViewed = 0;
         _authManager.onBoardStatus(isViewed);
-        Get.off(const HomeView());
+        Get.off(HomeView());
         // Navigator.push(
         //   context,
         //   MaterialPageRoute(

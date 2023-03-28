@@ -17,9 +17,9 @@ class BaseView extends StatelessWidget {
       // return _authManager.isLogged.value ? const HomeView() : LoginView();
       // final screenHeight = MediaQuery.of(context).size.height;
       return _authManager.isViewed.value == 0
-          ? const HomeView()
+          ? HomeView()
           // : OnBoardView(screenHeight: screenHeight);
-            : const OnBoardView();
+          : const OnBoardView();
     });
   }
 }

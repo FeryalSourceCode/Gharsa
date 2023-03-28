@@ -21,3 +21,11 @@ class Cards {
   static const String gcard4 = 'assets/svg/planting_a_tree.svg';
   static const String gcard5 = 'assets/svg/subsidies.svg';
 }
+
+class AppIcons {
+  static const String gIcon = 'assets/svg/add_a_photo.svg';
+  static const String gHome = 'assets/svg/home.svg';
+  static const String gPlant = 'assets/svg/plant4.svg';
+  static const String gProject = 'assets/svg/project.svg';
+  static const String gMore = 'assets/svg/more1.svg';
+}
