@@ -28,4 +28,8 @@ class AppIcons {
   static const String gPlant = 'assets/svg/plant4.svg';
   static const String gProject = 'assets/svg/project.svg';
   static const String gMore = 'assets/svg/more1.svg';
+
+  static const String gSearch = 'assets/svg/search.svg';
+  static const String gLogoName = 'assets/img/logo_name.png';
+  static const String gNotifaication = 'assets/svg/notification.svg';
 }

@@ -1,8 +1,7 @@
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:circular_reveal_animation/circular_reveal_animation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:gharsah_flutter/controller/home_controller.dart';
@@ -12,8 +11,6 @@ import 'package:gharsah_flutter/view/pages/home_page.dart';
 import 'package:gharsah_flutter/view/pages/more_page.dart';
 import 'package:gharsah_flutter/view/pages/project_page.dart';
 import 'package:gharsah_flutter/view/pages/upload_page.dart';
-
-import '../controller/navigation_controller.dart';
 import 'pages/info_page.dart';
 
 // ignore: must_be_immutable
@@ -22,25 +19,6 @@ class HomeView extends StatelessWidget {
 
   MainController controller = Get.put(MainController());
 
-  bool onScrollNotification(ScrollNotification notification) {
-    if (notification is UserScrollNotification &&
-        notification.metrics.axis == Axis.vertical) {
-      // switch (notification.direction) {
-      //   case ScrollDirection.forward:
-      //     controller.hideBottomBarAnimationController.reverse();
-      //     controller.fabAnimationController.forward(from: 0);
-      //     break;
-      //   case ScrollDirection.reverse:
-      //     controller.hideBottomBarAnimationController.forward();
-      //     controller.fabAnimationController.reverse(from: 1);
-      //     break;
-      //   case ScrollDirection.idle:
-      //     break;
-      // }
-    }
-    return false;
-  }
-
   @override
   Widget build(BuildContext context) {
     // final colors = AppColors.bgColor;
@@ -48,24 +26,53 @@ class HomeView extends StatelessWidget {
       () => Scaffold(
         extendBody: true,
         appBar: AppBar(
-          title: const Text(
-            "Hello",
-            style: TextStyle(color: Colors.white),
+          // systemOverlayStyle: SystemUiOverlayStyle(statusBarColor: Colors.transparent),
+          elevation: 0.0,
+          toolbarHeight: 60.0,
+          leadingWidth: 80,
+          leading: Container(
+            margin: const EdgeInsets.only(left: 16.0),
+            child: RawMaterialButton(onPressed: (){}, 
+            elevation: 0.0,
+            shape: const CircleBorder(),
+            child: Container(
+              width: 40.0, height: 40.0, decoration: BoxDecoration(
+                shape: BoxShape.circle, color: AppColors.gWhite, 
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: SvgPicture.asset(AppIcons.gSearch),
+              )),),
           ),
+          backgroundColor: AppColors.bgColor,
+          title: Image.asset(AppIcons.gLogoName, width: 90.0, height: 90.0,),
+          centerTitle: true,
+          actions: [
+            Container(
+              margin: const EdgeInsets.only(right: 1.0),
+              child: RawMaterialButton(
+                onPressed: () {},
+                elevation: 0.0,
+                shape: const CircleBorder(),
+                child: Container(
+                    width: 40.0,
+                    height: 40.0,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: AppColors.gWhite,
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: SvgPicture.asset(AppIcons.gNotifaication, width: 24.0, height: 24.0,),
+                    )),
+              ),
+            ),
+          ],
         ),
-        //  body: NotificationListener<ScrollNotification>(
-        //   onNotification: onScrollNotification,
-        //   child: NavigationScreen(controller.iconList[controller.bottomNavIndex.value]),
-        // ),
-        body: Obx(() => IndexedStack(
-              index: controller.bottomNavIndex.value,
-              children: const [
-                HomePage(),
-                InfoPage(),
-                ProjectPage(),
-                MorePage()
-              ],
-            )),
+        body: IndexedStack(
+          index: controller.bottomNavIndex.value,
+          children: const [HomePage(), InfoPage(), ProjectPage(), MorePage()],
+        ),
         floatingActionButton: FloatingActionButton(
           backgroundColor: AppColors.feldgrauColor,
           child: SvgPicture.asset(AppIcons.gIcon, width: 28.0, height: 28.0),
@@ -93,15 +100,6 @@ class HomeView extends StatelessWidget {
                   colorFilter: ColorFilter.mode(color, BlendMode.srcIn),
                 ),
                 const SizedBox(height: 4),
-                // Padding(
-                //   padding: const EdgeInsets.symmetric(horizontal: 8),
-                //   child: AutoSizeText(
-                //     "brightness $index",
-                //     maxLines: 1,
-                //     style: TextStyle(color: color),
-                //     group: controller.autoSizeGroup,
-                //   ),
-                // )
               ],
             );
           },
@@ -118,56 +116,11 @@ class HomeView extends StatelessWidget {
           hideAnimationController: controller.hideBottomBarAnimationController,
           shadow: BoxShadow(
             offset: const Offset(0, 1),
-            blurRadius: 12,
-            spreadRadius: 0.5,
+            blurRadius: 5,
+            spreadRadius: 0.1,
             color: AppColors.bgColor,
           ),
         ), //other params
-      ),
-    );
-  }
-}
-
-class NavigationScreen extends StatelessWidget {
-  NavigationController navController = Get.put(NavigationController());
-  final String iconData;
-  NavigationScreen(this.iconData, {super.key});
-
-  @override
-  void didUpdateWidget(NavigationScreen oldWidget) {
-    if (oldWidget.iconData != iconData) {
-      navController.startAnimation();
-    }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final colors = AppColors.bgColor;
-    return Container(
-      color: Theme.of(context).colorScheme.background,
-      child: ListView(
-        children: [
-          const SizedBox(height: 64),
-          Center(
-            child: CircularRevealAnimation(
-              animation: navController.animation,
-              centerOffset: Offset(80, 80),
-              maxRadius: MediaQuery.of(context).size.longestSide * 1.1,
-              child: SvgPicture.asset(
-                iconData,
-                width: 160.0,
-                height: 160.0,
-                colorFilter: ColorFilter.mode(
-                    AppColors.mustardYellowColor, BlendMode.srcIn),
-              ),
-              // child: Icon(
-              //   Icons.abc,
-              //   color: AppColors.mustardYellowColor,
-              //   size: 160,
-              // ),
-            ),
-          ),
-        ],
       ),
     );
   }
