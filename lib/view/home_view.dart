@@ -11,6 +11,7 @@ import 'package:gharsah_flutter/utils/constants.dart';
 import 'package:gharsah_flutter/view/pages/home_page.dart';
 import 'package:gharsah_flutter/view/pages/more_page.dart';
 import 'package:gharsah_flutter/view/pages/project_page.dart';
+import 'package:gharsah_flutter/view/pages/upload_page.dart';
 
 import '../controller/navigation_controller.dart';
 import 'pages/info_page.dart';
@@ -69,6 +70,7 @@ class HomeView extends StatelessWidget {
           backgroundColor: AppColors.feldgrauColor,
           child: SvgPicture.asset(AppIcons.gIcon, width: 28.0, height: 28.0),
           onPressed: () {
+            Get.to(const UploadPage());
             controller.fabAnimationController.reset();
             // controller.borderRadiusAnimationController.reset();
             // controller.borderRadiusAnimationController.forward();
