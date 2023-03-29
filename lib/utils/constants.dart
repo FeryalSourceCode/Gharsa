@@ -23,7 +23,7 @@ class Cards {
 }
 
 class AppIcons {
-  static const String gIcon = 'assets/svg/add_a_photo.svg';
+  static const String gIcon = 'assets/svg/add2.svg';
   static const String gHome = 'assets/svg/home.svg';
   static const String gPlant = 'assets/svg/plant4.svg';
   static const String gProject = 'assets/svg/project.svg';
@@ -32,4 +32,6 @@ class AppIcons {
   static const String gSearch = 'assets/svg/search.svg';
   static const String gLogoName = 'assets/img/logo_name.png';
   static const String gNotifaication = 'assets/svg/notification.svg';
+  static const String gBack = 'assets/svg/back2.svg';
+  static const String gUpload = 'assets/svg/upload_img.svg';
 }

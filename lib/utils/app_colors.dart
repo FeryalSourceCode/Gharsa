@@ -23,6 +23,7 @@ class AppColors {
   static Color rifleGreenColor = HexColor.fromHex('#40513B');
   static Color lightYellowColor = HexColor.fromHex('#FEFFDE');
   static Color feldgrauColor = HexColor.fromHex('#3C6255');
+  static Color mediumJungleGreen =  HexColor.fromHex('#1E312B');
 
   static Color jetStreamColor = HexColor.fromHex('#BBCBC2');
   static Color culturedGray = HexColor.fromHex('#f7f7f7');
