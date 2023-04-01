@@ -34,4 +34,17 @@ class AppIcons {
   static const String gNotifaication = 'assets/svg/notification.svg';
   static const String gBack = 'assets/svg/back2.svg';
   static const String gUpload = 'assets/svg/upload_img.svg';
+  static const String gGallery = 'assets/svg/gallery.svg';
+  static const String gCamera = 'assets/svg/camera.svg';
+}
+
+
+class AssetsPath {
+  static const String help = 'assets/types/help.svg';
+  static const String failure = 'assets/types/failure.svg';
+  static const String success = 'assets/types/success.svg';
+  static const String warning = 'assets/types/warning.svg';
+
+  static const String back = 'assets/svg/back.svg';
+  static const String bubbles = 'assets/svg/bubbles.svg';
 }

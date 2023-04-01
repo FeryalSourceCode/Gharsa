@@ -75,7 +75,7 @@ class HomeView extends StatelessWidget {
           backgroundColor: AppColors.feldgrauColor,
           child: SvgPicture.asset(AppIcons.gIcon, width: 28.0, height: 28.0),
           onPressed: () {
-            Get.to(const UploadPage());
+            Get.to(UploadPage());
             controller.fabAnimationController.reset();
             // controller.borderRadiusAnimationController.reset();
             // controller.borderRadiusAnimationController.forward();
