@@ -19,13 +19,22 @@ class UploadController extends GetxController with GetSingleTickerProviderStateM
   var compressImagePath = ''.obs;
   var compressImageSize = ''.obs;
 
+  var count = 0.obs;
+  var isIncrementing = false.obs;
+  var isDecrementing = false.obs;
+
+  // late AnimationController countController;
+  // late Animation<double> countAnimation;
+
   TextEditingController textEditingControllerSlideIn = TextEditingController();
   FocusNode myFocusNode = FocusNode();
 
-  @override
-  void onInit() {
-    // TODO: implement onInit
-    super.onInit();
+ void increment() {
+   count.value < 1000 ? count.value++ : null;
+  }
+
+  void decrement() {
+    count.value > 0 ? count.value-- : null;
   }
 
 @override
@@ -123,8 +132,16 @@ class UploadController extends GetxController with GetSingleTickerProviderStateM
   }
 
   List<String> getTypeList() {
-    List<String> data = ['Street', 'Land', 'Farm'];
-    return data;
+    // List<String> data = ['Street', 'Land', 'Farm'];
+    List<Types> typesList = [
+      Types(typeId: 1, typeName: 'Street'),
+      Types(typeId: 2, typeName: 'Small Land'),
+      Types(typeId: 3, typeName: 'Farm'),
+    ];
+
+    // final List<String> types = typesList.map((e) => e.type).toList();
+    return typesList.map((e) => e.typeName).toList();
+    
   }
 
   List<String> getCitiesList() {
@@ -136,8 +153,8 @@ class UploadController extends GetxController with GetSingleTickerProviderStateM
     // List<Types> data = [Types(typeId: 1, typeName: 'Street')];
 
     final items = List<Types>.generate(
-      1, 
-      (i) => Types(typeId: 1, typeName: 'Street'),
+      3, 
+      (i) => Types(typeId: i + 1, typeName: 'Street'),
     );
     return items.map((e) => e.typeName).toList();
   }

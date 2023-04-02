@@ -31,20 +31,20 @@ class MainController extends GetxController
     super.onInit();
 
     fabAnimationController = AnimationController(
-      duration: Duration(milliseconds: 500),
+      duration: const Duration(milliseconds: 500),
       vsync: this,
     );
     borderRadiusAnimationController = AnimationController(
-      duration: Duration(milliseconds: 500),
+      duration: const Duration(milliseconds: 500),
       vsync: this,
     );
     fabCurve = CurvedAnimation(
       parent: fabAnimationController,
-      curve: Interval(0.5, 1.0, curve: Curves.fastOutSlowIn),
+      curve: const Interval(0.5, 1.0, curve: Curves.fastOutSlowIn),
     );
     borderRadiusCurve = CurvedAnimation(
       parent: borderRadiusAnimationController,
-      curve: Interval(0.5, 1.0, curve: Curves.fastOutSlowIn),
+      curve: const Interval(0.5, 1.0, curve: Curves.fastOutSlowIn),
     );
 
     fabAnimation = Tween<double>(begin: 0, end: 1).animate(fabCurve);
@@ -53,16 +53,16 @@ class MainController extends GetxController
     );
 
     hideBottomBarAnimationController = AnimationController(
-      duration: Duration(milliseconds: 200),
+      duration: const Duration(milliseconds: 200),
       vsync: this,
     );
 
     Future.delayed(
-      Duration(seconds: 1),
+      const Duration(seconds: 1),
       () => fabAnimationController.forward(),
     );
     Future.delayed(
-      Duration(seconds: 1),
+      const Duration(seconds: 1),
       () => borderRadiusAnimationController.forward(),
     );
   }

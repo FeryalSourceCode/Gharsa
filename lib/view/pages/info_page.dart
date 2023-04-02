@@ -18,10 +18,10 @@ class InfoPage extends StatelessWidget {
           ),
         ),
         body: Container(
-          margin: EdgeInsets.only(bottom: 25, right: 10, left: 10),
+          margin: const EdgeInsets.only(bottom: 25, right: 10, left: 10),
           child: GridView.builder(
               itemCount: 20,
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 3,
               ),
               itemBuilder: (_, index) {
@@ -31,37 +31,37 @@ class InfoPage extends StatelessWidget {
                       color: AppColors.culturedGray,
                       borderRadius: BorderRadius.circular(5),
                     ),
-                    margin: EdgeInsets.all(10),
+                    margin: const EdgeInsets.all(10),
                     child: Column(
                       children: [
                         Container(
-                          margin: EdgeInsets.all(5),
+                          margin: const EdgeInsets.all(5),
                           // color: AppColors.gWhite,
                           height: 55,
                           width: 100,
                           decoration: BoxDecoration(
                               color: AppColors.gWhite,
                               borderRadius: BorderRadius.circular(5),
-                              image: DecorationImage(
+                              image: const DecorationImage(
                                 image: AssetImage("assets/img/laila1.jpeg"),
                                 fit: BoxFit.cover,
                               )),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 5,
                         ),
-                        Text('dkjh'),
-                        SizedBox(
+                        const Text('dkjh'),
+                        const SizedBox(
                           height: 3,
                         ),
                       ],
                     ),
                   ),
                   onTap: () {
-                    int myId=1;
+                    // int myId=1;
                     var router =
-                        new MaterialPageRoute(
-                            builder: (BuildContext context) =>plant_bank_information('laila'));
+                         MaterialPageRoute(
+                            builder: (BuildContext context) =>const plant_bank_information('laila'));
                  Navigator.of(context).push(router); },
                 );
               }),
@@ -69,15 +69,11 @@ class InfoPage extends StatelessWidget {
   }
 }
 
-
-import 'package:flutter/material.dart';
-
-import '../../utils/app_colors.dart';
-
+// ignore: camel_case_types
 class plant_bank_information extends StatelessWidget {
 
 final String id;
-plant_bank_information(this.id) ;
+const plant_bank_information(this.id, {super.key}) ;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -85,7 +81,7 @@ plant_bank_information(this.id) ;
         elevation: 0,
         backgroundColor: AppColors.gWhite,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios_outlined,color: Colors.brown),
+          icon: const Icon(Icons.arrow_back_ios_outlined,color: Colors.brown),
           onPressed: (){
             Navigator.of(context).pop();
           },
@@ -99,7 +95,7 @@ plant_bank_information(this.id) ;
         ),
       ),
       body: Container(
-        margin: EdgeInsets.all(20),
+        margin: const EdgeInsets.all(20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -107,31 +103,31 @@ plant_bank_information(this.id) ;
               height: 170,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(5),
-                image: DecorationImage(
+                image: const DecorationImage(
                   image: AssetImage("assets/img/laila1.jpeg"),
                   fit: BoxFit.cover,
                 ),
               ),
             ),
-            Container(
+            SizedBox(
               height: 70,
               child: ListView.builder(itemCount: 4,
                   scrollDirection: Axis.horizontal,itemBuilder: (_,i){
-                return Container(child:  Container(
-                  margin: EdgeInsets.only(top: 5,bottom:5,right: 10),
+                return Container(
+                  margin: const EdgeInsets.only(top: 5,bottom:5,right: 10),
                   // color: AppColors.gWhite,
                   height: 80,
                   width: 80,
                   decoration:BoxDecoration(
                       color: AppColors.gWhite,
                       borderRadius: BorderRadius.circular(5),
-                      image: DecorationImage(
+                      image: const DecorationImage(
                         image: AssetImage(
                             "assets/img/laila1.jpeg"),
                         fit:BoxFit.cover,
                       )
                   ),
-                ),);
+                );
               }),
             ),
             Text(
@@ -142,8 +138,8 @@ plant_bank_information(this.id) ;
                   fontSize: 18),
             ),
             Container(
-              margin: EdgeInsets.only(top: 8, bottom: 8),
-              child: Text(
+              margin: const EdgeInsets.only(top: 8, bottom: 8),
+              child: const Text(
                   'Turbary Turbary Turbary Turbary Turbary Turbary Turbary Turbary Turbary Turbary Turbary Turbary Turbary Turbary Turbary'),
             ),
             Text('Recommendation',
@@ -165,9 +161,9 @@ plant_bank_information(this.id) ;
                 Column(
                   children: [
                     Container(
-                      padding: EdgeInsets.all(10),
+                      padding: const EdgeInsets.all(10),
                       child: Column(
-                        children: [
+                        children: const [
                           Text(
                             '200ml',
                             style: TextStyle(fontSize: 10),
@@ -198,15 +194,14 @@ plant_bank_information(this.id) ;
       ),
       bottomNavigationBar: BottomAppBar(
           child: Container(
-        padding: EdgeInsets.all(10),
+        padding: const EdgeInsets.all(10),
         child: ElevatedButton(
           style: ButtonStyle(
               backgroundColor:
                   MaterialStateProperty.all(AppColors.dollarGreenColor)),
-          child: Text('Add to My Plants'),
+          child: const Text('Add to My Plants'),
           onPressed: () {
 
-            print(id);
           },
         ),
       )),
@@ -222,7 +217,7 @@ Column buildDiv(Color mycolor, IconData myIcon, String title, String subtitle) {
           Container(
             decoration: BoxDecoration(
                 color: mycolor, borderRadius: BorderRadius.circular(5)),
-            padding: EdgeInsets.all(5),
+            padding: const EdgeInsets.all(5),
             child: Icon(
               size: 15,
               myIcon,
@@ -230,16 +225,16 @@ Column buildDiv(Color mycolor, IconData myIcon, String title, String subtitle) {
             ),
           ),
           Container(
-            padding: EdgeInsets.all(10),
+            padding: const EdgeInsets.all(10),
             child: Column(
               children: [
                 Text(
                   '$title',
-                  style: TextStyle(fontSize: 10),
+                  style: const TextStyle(fontSize: 10),
                 ),
                 Text(
                   '$subtitle',
-                  style: TextStyle(fontWeight: FontWeight.bold),
+                  style: const TextStyle(fontWeight: FontWeight.bold),
                 ),
               ],
             ),

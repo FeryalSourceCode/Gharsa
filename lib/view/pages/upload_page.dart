@@ -3,21 +3,33 @@ import 'dart:io';
 import 'package:animated_custom_dropdown/custom_dropdown.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:gharsah_flutter/controller/forline_controller.dart';
 import 'package:gharsah_flutter/utils/app_colors.dart';
 import 'package:gharsah_flutter/utils/constants.dart';
 import 'package:image_picker/image_picker.dart';
-
-import '../../app_packages/slide_in_textformfield/slide_in_textformfield.dart';
 import '../../controller/upload_controller.dart';
 
+// ignore: must_be_immutable
 class UploadPage extends StatelessWidget {
   UploadPage({super.key});
 
   UploadController controller = Get.put(UploadController());
+
   final cityCtrl = TextEditingController();
   final placeCtrl = TextEditingController();
+
+  void _onIncrementPressed() {
+    controller.increment();
+  }
+
+  void _onDecrementPressed() {
+    controller.decrement();
+  }
+
+  int maxLines = 4;
 
   showModalBS(context) {
     showModalBottomSheet(
@@ -139,10 +151,12 @@ class UploadPage extends StatelessWidget {
         centerTitle: true,
       ),
       body: SingleChildScrollView(
+        physics: const AlwaysScrollableScrollPhysics(),
         child: Container(
           margin: const EdgeInsets.fromLTRB(20.0, 16.0, 20.0, 0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const Padding(
                 padding: EdgeInsets.fromLTRB(4.0, 8.0, 4.0, 16.0),
@@ -269,11 +283,12 @@ class UploadPage extends StatelessWidget {
                   borderType: BorderType.RRect,
                   radius: const Radius.circular(10.0),
                   child: CustomDropdown(
-                      hintText: 'Place Type',
-                      controller: placeCtrl,
-                      items: controller
-                          .getTypeData() //it waits 3 seconds before start searching (before execute the 'futureRequest' function)
-                      ),
+                    hintText: 'Place Type',
+                    controller: placeCtrl,
+                    items: controller
+                        .getTypeList(), //it waits 3 seconds before start searching (before execute the 'futureRequest' function)
+                    onChanged: (p0) {},
+                  ),
                 ),
               ),
               Container(
@@ -284,13 +299,185 @@ class UploadPage extends StatelessWidget {
                   strokeCap: StrokeCap.round,
                   borderType: BorderType.RRect,
                   radius: const Radius.circular(10.0),
-                  child: Text('')
+                  child: Container(
+                    color: AppColors.gWhite,
+                    padding: const EdgeInsets.fromLTRB(12.0, 12.0, 12.0, 12.0),
+                    clipBehavior: Clip.none,
+                    child: Expanded(
+                      // child: LimitedBox(
+                      // maxHeight: 3 * (const TextField().style?.fontSize ?? 14) * 1.5,
+                      child: FourLineTextField(),
+                    ),
                   ),
-              )
+                ),
+              ),
+              // The name of the crop you want to plant
+              const Padding(
+                padding: EdgeInsets.fromLTRB(4.0, 0.0, 4.0, 12.0),
+                child: Text(
+                  "The name of the crop you want to plant.",
+                  style: TextStyle(fontSize: 14.0, color: Colors.black54),
+                ),
+              ),
+              Container(
+                margin: const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 16.0),
+                child: DottedBorder(
+                  color: AppColors.jetStreamColor,
+                  dashPattern: const [3, 4],
+                  strokeCap: StrokeCap.round,
+                  borderType: BorderType.RRect,
+                  radius: const Radius.circular(10.0),
+                  child: Container(
+                    color: AppColors.gWhite,
+                    padding: const EdgeInsets.fromLTRB(12.0, 0.0, 12.0, 0.0),
+                    clipBehavior: Clip.none,
+                    child: const PlantTextField(),
+                  ),
+                ),
+              ),
+              const Padding(
+                padding: EdgeInsets.fromLTRB(4.0, 4.0, 4.0, 12.0),
+                child: Text(
+                  "The number of the plants.",
+                  style: TextStyle(fontSize: 14.0, color: Colors.black54),
+                ),
+              ),
+              Container(
+                margin: const EdgeInsets.only(top: 10.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    ElevatedButton(
+                      onPressed: controller.decrement,
+                      onLongPress: controller.decrement,
+                      style: ButtonStyle(
+                        backgroundColor:
+                            MaterialStateProperty.all(AppColors.feldgrauColor),
+                        shape:
+                            MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                        ),
+                        padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
+                          const EdgeInsets.all(12),
+                        ),
+                      ),
+                      child: const Icon(Icons.remove),
+                    ),
+                    const SizedBox(width: 30),
+                    Obx(
+                      () => Text(
+                        '${controller.count}',
+                        style: const TextStyle(fontSize: 20),
+                      ),
+                    ),
+                    const SizedBox(width: 30),
+                    ElevatedButton(
+                      onPressed: controller.increment,
+                      style: ButtonStyle(
+                        backgroundColor:
+                            MaterialStateProperty.all(AppColors.feldgrauColor),
+                        shape:
+                            MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                        ),
+                        padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
+                          const EdgeInsets.all(12),
+                        ),
+                      ),
+                      child: const Icon(Icons.add),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 30),
+              ElevatedButton(
+                onPressed: controller.decrement,
+                onLongPress: controller.decrement,
+                style: ButtonStyle(
+                  minimumSize: MaterialStateProperty.all(
+                      const Size(double.infinity, 50)),
+                  backgroundColor:
+                      MaterialStateProperty.all(AppColors.feldgrauColor),
+                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                  ),
+                  padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
+                    const EdgeInsets.all(12),
+                  ),
+                ),
+                child: const Text("Create", style: TextStyle(fontSize: 16.0),),
+              ),
+              const SizedBox(height: 30),
             ],
           ),
         ),
       ),
     );
+  }
+}
+
+class PlantTextField extends StatelessWidget {
+  const PlantTextField({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const TextField(
+      textAlign: TextAlign.start,
+      maxLines: 1,
+      minLines: 1,
+      decoration: InputDecoration(
+          border: InputBorder.none,
+          hintText: 'Crop Name',
+          hintStyle: TextStyle(color: Colors.grey),
+          contentPadding: EdgeInsets.only(top: 0.0, bottom: 0.0),
+          floatingLabelBehavior: FloatingLabelBehavior.never,
+          alignLabelWithHint: true),
+      textAlignVertical: TextAlignVertical.top,
+    );
+  }
+}
+
+class FourLineTextField extends GetView<FourLineTextFieldController> {
+  @override
+  FourLineTextFieldController controller =
+      Get.put(FourLineTextFieldController());
+
+  FourLineTextField({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return TextField(
+      controller: controller.textEditingController,
+      enabled: controller.isEnabled.value,
+      minLines: 2,
+      maxLines: 4,
+      textAlign: TextAlign.start,
+      maxLengthEnforcement: MaxLengthEnforcement.enforced,
+      decoration: const InputDecoration(
+          // border: UnderlineInputBorder(),
+          border: InputBorder.none,
+          hintText: 'Address Description',
+          hintStyle: TextStyle(color: Colors.grey),
+          contentPadding: EdgeInsets.only(top: 0.0, bottom: 0.0),
+          floatingLabelBehavior: FloatingLabelBehavior.never,
+          alignLabelWithHint: true),
+      textAlignVertical: TextAlignVertical.top,
+    );
+
+    // TextField(
+    //   controller: controller.textEditingController,
+    //   enabled: controller.isEnabled.value,
+    //   maxLines: 4,
+    //   decoration: InputDecoration(
+    //     border: OutlineInputBorder(),
+    //     hintText: 'Type here, up to 4 lines',
+    //   ),
+    // );
   }
 }
