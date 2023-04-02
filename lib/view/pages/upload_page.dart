@@ -395,8 +395,9 @@ class UploadPage extends StatelessWidget {
               ),
               const SizedBox(height: 30),
               ElevatedButton(
-                onPressed: controller.decrement,
-                onLongPress: controller.decrement,
+                onPressed: () {
+                  print('Created');
+                },
                 style: ButtonStyle(
                   minimumSize: MaterialStateProperty.all(
                       const Size(double.infinity, 50)),
@@ -411,7 +412,10 @@ class UploadPage extends StatelessWidget {
                     const EdgeInsets.all(12),
                   ),
                 ),
-                child: const Text("Create", style: TextStyle(fontSize: 16.0),),
+                child: const Text(
+                  "Create",
+                  style: TextStyle(fontSize: 16.0),
+                ),
               ),
               const SizedBox(height: 30),
             ],
