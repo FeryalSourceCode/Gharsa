@@ -10,5 +10,5 @@ There isn't any specific instructions to run the code except the previous one.
 - The App will need an internet connection to see the content, login, create account etc...
 
 - Login instruction:
-    -*username: gharsa
-    -*password: gh3288
+    -username: gharsa
+    -password: gh3288
