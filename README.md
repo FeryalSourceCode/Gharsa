@@ -4,8 +4,6 @@ A Flutter project that build to help people to plant their envirnment and help f
 
 ## Getting Started
 
--To run the App you should make sure that you have the last version of Gradle and Jave sdk 11.
-There isn't any specific instructions to run except the previous one.
-
-
+-To run the App you should make sure that you have the last version of Gradle, Flutter SDK, dart SDK and Jave SDK 11.
+There isn't any specific instructions to run the App except the previous one.
 
