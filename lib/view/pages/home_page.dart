@@ -89,7 +89,8 @@ class HomePage extends StatelessWidget {
                     color: AppColors.beigeColor,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(15.0),
-                      side: BorderSide(color: AppColors.EggshellColor,
+                      side: BorderSide(
+                        color: AppColors.EggshellColor,
                       ),
                     ),
                     child: Container(
@@ -243,11 +244,10 @@ class HomePage extends StatelessWidget {
                       itemBuilder: (_, index) {
                         return InkWell(
                           child: const PlantCard(),
-                          onTap: () {
-                          },
+                          onTap: () {},
                         );
                       }),
-                        const SizedBox(
+                  const SizedBox(
                     height: 12.0,
                   ),
                 ],

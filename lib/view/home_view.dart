@@ -25,7 +25,7 @@ class HomeView extends StatelessWidget {
         extendBody: true,
         body: IndexedStack(
           index: controller.bottomNavIndex.value,
-          children: [HomePage(), const InfoPage(), const ProjectPage(), const MorePage()],
+          children: [HomePage(), InfoPage(), const ProjectPage(), const MorePage()],
         ),
         floatingActionButton: FloatingActionButton(
           backgroundColor: AppColors.feldgrauColor,
