@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:gharsah_flutter/view/pages/info_page.dart';
-import 'package:gharsah_flutter/view/sign_in_view.dart';
 
 import '../components/text_form_global.dart';
 
@@ -90,10 +89,10 @@ class LoginView extends StatelessWidget {
 
                     Text("Didn't have an a account? "),
                     InkWell(onTap: (){
-                      var router =
-                      new MaterialPageRoute(
-                          builder: (BuildContext context) =>sign_in_view());
-                      Navigator.of(context).push(router);
+                      // var router =
+                      // new MaterialPageRoute(
+                      //     builder: (BuildContext context) =>sign_in_view());
+                      // Navigator.of(context).push(router);
                     },
                         child: Text("Sign Up" ,style: TextStyle(fontWeight:FontWeight.bold ),)),
                   ],),

@@ -16,23 +16,23 @@ class OnBoardView extends StatelessWidget {
 
     final List<Introduction> list = [
       const Introduction(
-        title: 'Buy & Sell',
-        subTitle: 'Browse the menu and order directly from the application',
+        title: 'Help Farmers',
+        subTitle: 'Help Farmers to plant their farms.',
         imageUrl: Cards.gcard1,
       ),
       const Introduction(
-        title: 'Delivery',
-        subTitle: 'Your order will be immediately collected and',
+        title: 'Plant a tree',
+        subTitle: 'Plant a tree to green the earth',
         imageUrl: Cards.gcard2,
       ),
       const Introduction(
-        title: 'Receive Money',
-        subTitle: 'Pick up delivery at your door and enjoy groceries',
+        title: 'Save Invironment',
+        subTitle: 'By your help, the environment well be saved.',
         imageUrl: Cards.gcard3,
       ),
       const Introduction(
         title: 'Finish',
-        subTitle: 'Browse the menu and order directly from the application',
+        subTitle: 'Go to the App and start the plant.',
         imageUrl: Cards.gcard4,
       ),
     ];

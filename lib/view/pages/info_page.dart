@@ -1,22 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 import 'package:gharsah_flutter/components/plant_card.dart';
 import 'package:gharsah_flutter/utils/app_colors.dart';
 
+import '../../controller/info_controller.dart';
 import '../../utils/constants.dart';
 // import 'package:gharsah_flutter/view/pages/plant_bank_information.dart';
 
 class InfoPage extends StatelessWidget {
   InfoPage({super.key});
 
-  final List<Map<String, dynamic>> dataList = [
-    {'icon': 'assets/svg/p_leaf.svg', 'text': 'All'},
-    {'icon': 'assets/svg/in_p_7.svg', 'text': 'Indoor'},
-    {'icon': 'assets/svg/in_p_2.svg', 'text': 'Outdoor'},
-    {'icon': 'assets/svg/p_corn4.svg', 'text': 'Crop'},
-    {'icon': 'assets/svg/p_flower.svg', 'text': 'Flower'},
-     {'icon': 'assets/svg/seed.svg', 'text': 'Seeds'},
-  ];
+  final PlantInfoController controller = Get.put(PlantInfoController());
+  // final List<Map<String, dynamic>> dataList = [
+  //   {'icon': 'assets/svg/p_leaf.svg', 'text': 'All'},
+  //   {'icon': 'assets/svg/in_p_7.svg', 'text': 'Indoor'},
+  //   {'icon': 'assets/svg/in_p_2.svg', 'text': 'Outdoor'},
+  //   {'icon': 'assets/svg/p_corn4.svg', 'text': 'Crop'},
+  //   {'icon': 'assets/svg/p_flower.svg', 'text': 'Flower'},
+  //    {'icon': 'assets/svg/seed.svg', 'text': 'Seeds'},
+  // ];
 
   @override
   Widget build(BuildContext context) {
@@ -57,22 +60,33 @@ class InfoPage extends StatelessWidget {
           centerTitle: true,
         ),
         body: Container(
-          margin:
-              const EdgeInsets.only(bottom: 25, right: 6, left: 6, top: 6),
+          margin: const EdgeInsets.only(bottom: 25, right: 6, left: 6, top: 6),
           child: SingleChildScrollView(
             child: Column(
               children: [
                 Container(
                   height: 80.0,
                   width: double.infinity,
-                  margin: EdgeInsets.only(bottom: 12.0),
+                  margin: const EdgeInsets.only(bottom: 12.0),
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
-                    itemCount: dataList.length,
+                    itemCount: controller.dataList.length,
                     itemBuilder: (BuildContext context, int index) {
+                      final isSelected = controller.dataList[index]['selected'];
+                      final textColor =
+                          isSelected == true ? AppColors.jetStreamColor : AppColors.gGray;
+                      final iconColor = isSelected == true
+                          ? AppColors.jetStreamColor
+                          : AppColors.gGray;
+                      final cardColor = isSelected == true
+                          ? AppColors.feldgrauColor
+                          : AppColors.gWhite;
+
                       return Card(
-                         margin: const EdgeInsets.only(top: 6.0, left: 8.0, right: 8.0),
+                        margin: const EdgeInsets.only(
+                            top: 6.0, left: 8.0, right: 8.0),
                         elevation: 0.0,
+                        color: cardColor,
                         // color: AppColors.beigeColor,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(15.0),
@@ -80,22 +94,35 @@ class InfoPage extends StatelessWidget {
                             color: AppColors.platinum,
                           ),
                         ),
-                        child: Container(
-                          width: 80.0,
-                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              SvgPicture.asset(dataList[index]['icon'], width: 30.0, height: 30.0,),
-                              const SizedBox(height: 8.0),
-                              Text(
-                                dataList[index]['text'],
-                                style: TextStyle(fontSize: 12.0,
-                                      color: AppColors.gGray,
+                        child: InkWell(
+                          onTap: () {
+                            controller.setSelectedIndex(index);
+                          },
+                          child: Container(
+                            width: 80.0,
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 8.0),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                SvgPicture.asset(
+                                  controller.dataList[index]['icon'].toString(),
+                                  width: 30.0,
+                                  height: 30.0,
+                                  colorFilter: ColorFilter.mode(
+                                      iconColor, BlendMode.srcIn),
+                                ),
+                                const SizedBox(height: 8.0),
+                                Text(
+                                  controller.dataList[index]['text'].toString(),
+                                  style: TextStyle(
+                                      fontSize: 12.0,
+                                      color: textColor,
                                       fontFamily: 'tajawal',
                                       fontWeight: FontWeight.w600),
-                              ),
-                            ],
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       );
