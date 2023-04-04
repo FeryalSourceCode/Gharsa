@@ -29,12 +29,12 @@ class Notifications_view extends StatelessWidget {
                     ),
                     ListTile(
                       leading: Container(
-                          padding: EdgeInsets.all(5),
+                          padding: EdgeInsets.all(8),
                           decoration: BoxDecoration(
                               color: Colors.blue,
                               borderRadius: BorderRadius.circular(20)),
                           child: Icon(
-                            Icons.accessibility,
+                            Icons.music_note,
                             color: Colors.black,
                           )),
                       title: RichText(
@@ -65,3 +65,4 @@ class Notifications_view extends StatelessWidget {
     );
   }
 }
+
