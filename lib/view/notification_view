@@ -1,0 +1,68 @@
+import 'dart:convert';
+
+import 'package:flutter/material.dart';
+
+class Notifications_view extends StatelessWidget {
+  const Notifications_view({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: SafeArea(
+        child: Container(
+
+          margin: EdgeInsets.all(20),
+          alignment: Alignment.topRight,
+          child: ListView.builder(
+              itemCount: 20,
+              itemBuilder: (context, index) {
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Container(
+                      child: Text(
+                        'Today',
+                        textAlign: TextAlign.start,
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      margin: EdgeInsets.only(left: 10),
+                    ),
+                    ListTile(
+                      leading: Container(
+                          padding: EdgeInsets.all(8),
+                          decoration: BoxDecoration(
+                              color: Colors.blue,
+                              borderRadius: BorderRadius.circular(20)),
+                          child: Icon(
+                            Icons.music_note,
+                            color: Colors.black,
+                          )),
+                      title: RichText(
+                        text: TextSpan(
+                          text: 'You have added  ',
+                          style: DefaultTextStyle.of(context).style,
+                          children: const <TextSpan>[
+                            TextSpan(
+                                text: 'WebUI.img',
+                                style: TextStyle(fontWeight: FontWeight.bold)),
+                          ],
+                        ),
+                      ),
+                      subtitle: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text('/AI Tutorial'),
+                          Text('2 Min Ago'),
+                        ],
+                      ),
+                    ),
+                    Divider(),
+                  ],
+                );
+              }),
+        ),
+      ),
+    );
+  }
+}
+
