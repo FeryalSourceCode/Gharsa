@@ -31,6 +31,9 @@ class AppColors {
   
   static Color bronzeColor = HexColor.fromHex('#AA8B56');
   static Color mustardYellowColor = HexColor.fromHex('#E7B10A');
+  static Color mediumChampagneColor = HexColor.fromHex('#FFE9A0');
+  static Color blondColor = HexColor.fromHex('#F5F0BB');
+  static Color beigeColor = HexColor.fromHex('#F7F6DC');
 }
 
 /// `DefaultColors` incase `color` paramter is null in `ContentType`

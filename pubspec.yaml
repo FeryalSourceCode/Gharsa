@@ -106,5 +106,17 @@ flutter:
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
   #
+  fonts:
+    - family: Philosopher
+      fonts:
+        - asset: assets/fonts/Philosopher-Regular.ttf
+    - family: Messiri
+      fonts:
+        - asset: assets/fonts/ElMessiri-Medium.ttf
+    - family: tajawal
+      fonts:
+        - asset: assets/fonts/Tajawal-Medium.ttf
+        - asset: assets/fonts/Tajawal-Regular.ttf
+        - asset: assets/fonts/Tajawal-Bold.ttf
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

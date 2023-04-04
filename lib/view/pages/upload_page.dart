@@ -21,14 +21,6 @@ class UploadPage extends StatelessWidget {
   final cityCtrl = TextEditingController();
   final placeCtrl = TextEditingController();
 
-  void _onIncrementPressed() {
-    controller.increment();
-  }
-
-  void _onDecrementPressed() {
-    controller.decrement();
-  }
-
   int maxLines = 4;
 
   showModalBS(context) {
@@ -145,7 +137,7 @@ class UploadPage extends StatelessWidget {
         ),
         backgroundColor: AppColors.bgColor,
         title: Text(
-          "New Post",
+          "New Project",
           style: TextStyle(color: AppColors.feldgrauColor),
         ),
         centerTitle: true,

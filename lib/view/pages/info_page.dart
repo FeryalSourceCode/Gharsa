@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:gharsah_flutter/components/plant_card.dart';
 import 'package:gharsah_flutter/utils/app_colors.dart';
+
+import '../../utils/constants.dart';
 // import 'package:gharsah_flutter/view/pages/plant_bank_information.dart';
 
 class InfoPage extends StatelessWidget {
@@ -8,55 +12,47 @@ class InfoPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: AppColors.gWhite,
-        appBar: AppBar(
-          backgroundColor: AppColors.gWhite,
-          elevation: 0,
-          title: Text(
-            'plant bank',
-            style: TextStyle(color: AppColors.rifleGreenColor),
+        backgroundColor: AppColors.bgColor,
+       appBar: AppBar(
+          // systemOverlayStyle: SystemUiOverlayStyle(statusBarColor: Colors.transparent),
+          elevation: 0.0,
+          toolbarHeight: 60.0,
+          leadingWidth: 80,
+          leading: Container(
+            margin: const EdgeInsets.only(left: 16.0),
+            child: RawMaterialButton(
+              onPressed: () {},
+              elevation: 0.0,
+              shape: const CircleBorder(),
+              child: Container(
+                  width: 40.0,
+                  height: 40.0,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: AppColors.gWhite,
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: SvgPicture.asset(AppIcons.gSearch),
+                  )),
+            ),
           ),
+          backgroundColor: AppColors.bgColor,
+          title: Text("Plant Bank", style: TextStyle(color: AppColors.feldgrauColor, 
+          fontFamily: 'Philosopher', fontWeight: FontWeight.bold
+            ),),
+          centerTitle: true,
         ),
         body: Container(
-          margin: const EdgeInsets.only(bottom: 25, right: 10, left: 10),
+          margin: const EdgeInsets.only(bottom: 25, right: 10, left: 10, top: 6),
           child: GridView.builder(
               itemCount: 20,
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 3,
+                crossAxisCount: 2,
               ),
               itemBuilder: (_, index) {
                 return InkWell(
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: AppColors.culturedGray,
-                      borderRadius: BorderRadius.circular(5),
-                    ),
-                    margin: const EdgeInsets.all(10),
-                    child: Column(
-                      children: [
-                        Container(
-                          margin: const EdgeInsets.all(5),
-                          // color: AppColors.gWhite,
-                          height: 55,
-                          width: 100,
-                          decoration: BoxDecoration(
-                              color: AppColors.gWhite,
-                              borderRadius: BorderRadius.circular(5),
-                              image: const DecorationImage(
-                                image: AssetImage("assets/img/laila1.jpeg"),
-                                fit: BoxFit.cover,
-                              )),
-                        ),
-                        const SizedBox(
-                          height: 5,
-                        ),
-                        const Text('dkjh'),
-                        const SizedBox(
-                          height: 3,
-                        ),
-                      ],
-                    ),
-                  ),
+                  child: const PlantCard(),
                   onTap: () {
                     // int myId=1;
                     var router =

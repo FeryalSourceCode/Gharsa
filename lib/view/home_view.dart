@@ -23,53 +23,9 @@ class HomeView extends StatelessWidget {
     return Obx(
       () => Scaffold(
         extendBody: true,
-        appBar: AppBar(
-          // systemOverlayStyle: SystemUiOverlayStyle(statusBarColor: Colors.transparent),
-          elevation: 0.0,
-          toolbarHeight: 60.0,
-          leadingWidth: 80,
-          leading: Container(
-            margin: const EdgeInsets.only(left: 16.0),
-            child: RawMaterialButton(onPressed: (){}, 
-            elevation: 0.0,
-            shape: const CircleBorder(),
-            child: Container(
-              width: 40.0, height: 40.0, decoration: BoxDecoration(
-                shape: BoxShape.circle, color: AppColors.gWhite, 
-              ),
-              child: Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: SvgPicture.asset(AppIcons.gSearch),
-              )),),
-          ),
-          backgroundColor: AppColors.bgColor,
-          title: Image.asset(AppIcons.gLogoName, width: 90.0, height: 90.0,),
-          centerTitle: true,
-          actions: [
-            Container(
-              margin: const EdgeInsets.only(right: 1.0),
-              child: RawMaterialButton(
-                onPressed: () {},
-                elevation: 0.0,
-                shape: const CircleBorder(),
-                child: Container(
-                    width: 40.0,
-                    height: 40.0,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: AppColors.gWhite,
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: SvgPicture.asset(AppIcons.gNotifaication, width: 24.0, height: 24.0,),
-                    )),
-              ),
-            ),
-          ],
-        ),
         body: IndexedStack(
           index: controller.bottomNavIndex.value,
-          children: const [HomePage(), InfoPage(), ProjectPage(), MorePage()],
+          children: [HomePage(), const InfoPage(), const ProjectPage(), const MorePage()],
         ),
         floatingActionButton: FloatingActionButton(
           backgroundColor: AppColors.feldgrauColor,
