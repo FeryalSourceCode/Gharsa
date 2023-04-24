@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 import 'package:gharsah_flutter/components/plant_card.dart';
 import 'package:gharsah_flutter/components/project_card.dart';
+import 'package:gharsah_flutter/controller/home_controller.dart';
+import 'package:gharsah_flutter/controller/home_page_controller.dart';
 import 'package:gharsah_flutter/utils/app_colors.dart';
 
 import '../../utils/constants.dart';
@@ -9,6 +12,8 @@ import '../../utils/constants.dart';
 class HomePage extends StatelessWidget {
   HomePage({super.key});
 
+  MainController controller = Get.put(MainController());
+  HomeController homeController = Get.put(HomeController());
   final projectItems = List<String>.generate(2, (index) => "Item $index");
 
   @override
@@ -174,13 +179,16 @@ class HomePage extends StatelessWidget {
                           ),
                         ],
                       ),
-                      Text(
-                        'Show All',
-                        style: TextStyle(
-                            fontSize: 16,
-                            color: AppColors.jetStreamColor,
-                            fontFamily: 'Philosopher',
-                            fontWeight: FontWeight.w600),
+                      InkWell(
+                        onTap: () => controller.changeTabIndex(2),
+                        child: Text(
+                          'Show All',
+                          style: TextStyle(
+                              fontSize: 16,
+                              color: AppColors.jetStreamColor,
+                              fontFamily: 'Philosopher',
+                              fontWeight: FontWeight.w600),
+                        ),
                       ),
                     ],
                   ),
@@ -192,7 +200,9 @@ class HomePage extends StatelessWidget {
                     physics: const NeverScrollableScrollPhysics(),
                     itemCount: 2,
                     itemBuilder: (BuildContext context, int index) {
-                      return const ProjectCard();
+                      return InkWell(onTap: () {
+                        homeController.openProjectDetails(index);
+                      }, child: const ProjectCard());
                     },
                   ),
                   Row(
@@ -220,13 +230,16 @@ class HomePage extends StatelessWidget {
                           ),
                         ],
                       ),
-                      Text(
-                        'Show All',
-                        style: TextStyle(
-                            fontSize: 16,
-                            color: AppColors.jetStreamColor,
-                            fontFamily: 'Philosopher',
-                            fontWeight: FontWeight.w600),
+                      InkWell(
+                        onTap: () => controller.changeTabIndex(1),
+                        child: Text(
+                          'Show All',
+                          style: TextStyle(
+                              fontSize: 16,
+                              color: AppColors.jetStreamColor,
+                              fontFamily: 'Philosopher',
+                              fontWeight: FontWeight.w600),
+                        ),
                       ),
                     ],
                   ),
@@ -244,7 +257,9 @@ class HomePage extends StatelessWidget {
                       itemBuilder: (_, index) {
                         return InkWell(
                           child: const PlantCard(),
-                          onTap: () {},
+                          onTap: () {
+                            homeController.openPlantDetails(index);
+                          },
                         );
                       }),
                   const SizedBox(

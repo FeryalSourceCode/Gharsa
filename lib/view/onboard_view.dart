@@ -26,7 +26,7 @@ class OnBoardView extends StatelessWidget {
         imageUrl: Cards.gcard2,
       ),
       const Introduction(
-        title: 'Save Invironment',
+        title: 'Save Environment',
         subTitle: 'By your help, the environment well be saved.',
         imageUrl: Cards.gcard3,
       ),

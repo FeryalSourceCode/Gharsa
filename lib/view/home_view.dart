@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:gharsah_flutter/controller/home_controller.dart';
+import 'package:gharsah_flutter/controller/home_page_controller.dart';
 import 'package:gharsah_flutter/utils/app_colors.dart';
 import 'package:gharsah_flutter/utils/constants.dart';
 import 'package:gharsah_flutter/view/pages/home_page.dart';
